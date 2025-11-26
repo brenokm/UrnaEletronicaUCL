@@ -26,12 +26,12 @@ main()
 
     while (true)
     {
-        cout << "Lista de Candidatos:\n";
-        cout << "1 - Maria\n";
-        cout << "2 - Jose\n";
-        cout << "3 - Joao\n";
-        cout << "4 - Pedro\n";
-        cout << "5 - Julia\n";
+        cout << "Lista de Candidatos:"<< endl;
+        cout << "1 - Maria"<< endl;
+        cout << "2 - Jose"<< endl;
+        cout << "3 - Joao"<< endl;
+        cout << "4 - Pedro"<< endl;
+        cout << "5 - Julia"<< endl;
         cout << "Escolha o candidato ou 0 para encerrar: ";
         cin >> escolha;
 
@@ -46,7 +46,7 @@ main()
         }
         else
         {
-            cout << "Opcao invalida! Tente novamente.\n";
+            cout << "Opcao invalida! Tente novamente."<< endl;
             main();
         }
     }
@@ -77,4 +77,3 @@ main()
     cout << "O ganhador foi: " << candidatos[vencedor] << endl;
     cout << "Numero de votos: " << votos[vencedor] << endl;
 }
-
