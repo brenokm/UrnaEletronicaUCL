@@ -1,37 +1,60 @@
 #include <iostream>
-using namespace std;
 #include <vector>
+using namespace std;
 
-int acharVencedor(vector<int> votos)
+int apurar(vector<int> votos)
 {
-    int maior = votos[1];
-    int indiceVencedor = 1;
-
+    int vencedor = 1;
     for (int i = 1; i < 6; i++)
     {
-        if (votos[i] > maior)
+        if (votos[i] > votos[vencedor])
         {
-            maior = votos[i];
-            indiceVencedor = i;
+            vencedor = i;
         }
     }
-    return indiceVencedor;
+    return vencedor;
 }
 
-main()
+int encerrar(vector<int> votos, vector<string> nome, int total)
+{
+    cout << "-----------------------------" << endl;
+    cout << "-----------------------------" << endl;
+    cout << "-----------------------------" << endl;
+    cout << "------ VOTACAO ENCERRADA ----" << endl;
+    cout << "-----------------------------" << endl;
+    cout << "-----------------------------" << endl;
+    cout << "-----------------------------" << endl;
+
+    cout << "Numero total de votos: " << total << endl;
+    cout << "Votos dos candidatos:" << endl;
+
+    for (int i = 1; i <= 5; i++)
+    {
+        cout << i << " - " << nome[i] << ": " << votos[i] << " voto(s)" << endl;
+    }
+
+    int vencedor = apurar(votos);
+
+    cout << "O ganhador foi: " << nome[vencedor] << endl;
+    cout << "Numero de votos do(a) ganhador(a): " << votos[vencedor] << endl;
+}
+
+int main()
 {
     vector<string> candidatos = {"-", "Maria", "Jose", "Joao", "Pedro", "Julia"};
     vector<int> votos(6, 0);
-    int escolha, totalVotos = 0;
+
+    int escolha;
+    int totalVotos = 0;
 
     while (true)
     {
-        cout << "Lista de Candidatos:"<< endl;
-        cout << "1 - Maria"<< endl;
-        cout << "2 - Jose"<< endl;
-        cout << "3 - Joao"<< endl;
-        cout << "4 - Pedro"<< endl;
-        cout << "5 - Julia"<< endl;
+        cout << "Lista de Candidatos:" << endl;
+        cout << "1 - Maria" << endl;
+        cout << "2 - Jose" << endl;
+        cout << "3 - Joao" << endl;
+        cout << "4 - Pedro" << endl;
+        cout << "5 - Julia" << endl;
         cout << "Escolha o candidato ou 0 para encerrar: ";
         cin >> escolha;
 
@@ -42,38 +65,12 @@ main()
         }
         else if (escolha == 0)
         {
+            encerrar(votos, candidatos, totalVotos);
             break;
         }
         else
         {
-            cout << "Opcao invalida! Tente novamente."<< endl;
-            main();
+            cout << "Tente uma opçao valida" << endl;
         }
     }
-
-    cout << "-----------------------------" << endl;
-    cout << "-----------------------------" << endl;
-    cout << "------votacao encerrada------" << endl;
-    cout << "-----------------------------" << endl;
-    cout << "-----------------------------" << endl;
-
-    cout << "Numero total de votos: " << totalVotos << endl;
-    cout << "Votos dos candidatos: " << endl;
-    for (int i = 1; i < 6; i++)
-    {
-        cout << i << " - " << candidatos[i] << ": " << votos[i] << " voto(s)" << endl;
-    }
-    cout << "-----------------------------" << endl;
-    cout << "-----------------------------" << endl;
-    cout << "-----------------------------" << endl;
-    cout << "-----------------------------" << endl;
-    cout << "-----------------------------" << endl;
-
-    int maior = 0;
-    int numerovencedor = 0;
-
-    int vencedor = acharVencedor(votos);
-
-    cout << "O ganhador foi: " << candidatos[vencedor] << endl;
-    cout << "Numero de votos: " << votos[vencedor] << endl;
 }
